@@ -14,6 +14,7 @@ exposed for hacking and experimentation.
 -}
 module Crypto.Secp256k1.Internal where
 
+import           Data.Word (Word8)
 import           Control.DeepSeq       (NFData)
 import           Control.Monad         (guard, unless)
 import           Data.ByteString       (ByteString)
