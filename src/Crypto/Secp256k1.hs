@@ -139,8 +139,9 @@ instance NFData RecSig where
     rnf (RecSig p) = p `seq` ()
 
 decodeHex :: ConvertibleStrings a ByteString => a -> Maybe ByteString
-decodeHex str = if BS.null r then Just bs else Nothing where
-    (bs, r) = B16.decode $ cs str
+decodeHex str = case B16.decode $ cs str of
+                  Left _ -> Nothing
+                  Right bs -> Just bs
 
 instance Read PubKey where
     readPrec = do
